@@ -1,0 +1,18 @@
+import random
+import string
+length = int(input("Enter the desired length of password:"))
+include_uppercase = input("Include uppercase letters?(y/n):").lower()=='y'
+include_lowercase = input("Include lowercase letters?(y/n):").lower()=='y'
+include_digits = input("Include digits?(y/n):").lower()=='y'
+include_punctuation = input("Include special characters?(e.g., !@#) (y/n):").lower()=='y'
+
+characters =""
+if include_uppercase:characters +=string.ascii_uppercase
+if include_lowercase:characters +=string.ascii_lowercase
+if include_digits:characters +=string.digits
+if include_punctuation:characters +=string.punctuation
+if not characters:
+    print("You must select at least one type of character!")
+else:    
+    password = ''.join(random.choice(characters)for _ in range(length))
+print(f"Generated password:{password}")
